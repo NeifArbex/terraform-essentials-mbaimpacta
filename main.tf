@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   version = "3.5.0"
 
-  credentials = file("/vagrant/neif-mbaimpacta-turma4-a9c911b28e87.json")
+# removido  credentials = file("/vagrant/neif-mbaimpacta-turma4-a9c911b28e87.json")
 
   project = "neif-mbaimpacta-turma4"
   region  = "us-central1"
