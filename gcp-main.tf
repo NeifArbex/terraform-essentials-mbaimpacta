@@ -10,39 +10,10 @@ terraform {
 provider "google" {
   version = "3.5.0"
 
-# removido  credentials = file("/vagrant/neif-mbaimpacta-turma4-a9c911b28e87.json")
+  credentials = file("/vagrant/neif-mbaimpacta-turma4-a9c911b28e87.json")
 
-  project = "neif-mbaimpacta-turma4"
+  project     = "neif-mbaimpacta-turma4"
   region  = "us-central1"
   zone    = "us-central1-c"
-}
-
-# Cria uma VM no Google Cloud
-resource "google_compute_instance" "firstvm" {
-  name         = "website"
-  machine_type = "n1-standard-1"
-  zone         = "us-central1-a"
-  # Insira essa linha após zone 
-  tags = ["website", "impacta"]
-
-  # Defini a Imagem da VM
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-1804-bionic-v20201014"
-    }
-  }
-
-  # Habilita rede para a VM com um IP público
-  network_interface {
-    network = "default" # Estamos usando a VPC default que já vem por padrão no projeto.
-
-    access_config {
-      // A presença do bloco access_config, mesmo sem argumentos, garante que a instância estará acessível pela internet.
-    }
-  }
-}
-
-# Retorna o IP da VM criada
-output "ip" {
-  value = google_compute_instance.firstvm.network_interface.0.access_config.0.nat_ip
+  tags         = ["website", "impacta"]
 }
