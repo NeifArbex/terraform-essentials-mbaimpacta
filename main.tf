@@ -1,4 +1,5 @@
 #### SETUP GOOGLE ####
+
 terraform {
   required_providers {
     google = {
