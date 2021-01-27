@@ -12,7 +12,7 @@ terraform {
 provider "google" {
   version = "3.5.0"
 
-  project = "Neif-MBAImpacta-Turma4-S2"
+  project = "neif-mbaimpacta-turma4-s2"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
