@@ -101,3 +101,36 @@ resource "azurerm_network_interface_security_group_association" "example" {
 }
 
 ##### End Azure Network
+
+##### Máquina Virtual Linux 
+resource "azurerm_linux_virtual_machine" "firstvm" {
+  name                = "Website"
+  location                  = var.rg_location
+  resource_group_name       = azurerm_resource_group.myresourcegroup.name
+  size                = "Standard_B1S"
+
+  disable_password_authentication = "false"
+  admin_username                  = "adminuser"
+  admin_password                  = var.azurevm_admin_pass
+
+  network_interface_ids = [
+    azurerm_network_interface.myterraformnic.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
+
+  tags = {
+    environment = "Terraform Multi Cloud"
+  }
+}
+##### End Máquina Virtual Linux
