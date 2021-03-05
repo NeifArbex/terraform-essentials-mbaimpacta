@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "firstresourcegroup" {
+resource "azurerm_resource_group" "myresourcegroup" {
     name     = "LabMultiCloud"
     location = var.rg_location
 
