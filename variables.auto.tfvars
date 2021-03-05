@@ -1,2 +1,2 @@
 # Variáveis do GCP
-gcp_project   = "neif-mbaimpacta-turma4-s2"
+gcp_project   = "neif-mbaimpacta-turma04"
